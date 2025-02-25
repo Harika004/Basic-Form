@@ -1,0 +1,25 @@
+body{
+ background-color: hsl(148,38%,91%);
+ display:flex;
+ justify-content: center;
+ font-family: "Karla", serif;
+}
+.form-page{
+    width:550px;
+    height:550px;
+    background-color: hsl(0,0%,100%);
+    border-radius:15px;
+    margin-top:75px;
+    margin-bottom: 75px;
+    padding:20px;
+}
+.heading{
+    /* margin:20px 8px 8px 20px; */
+    font-weight:700;
+    font-size: 25px;
+}
+.form-labels{
+    font-size:16px;
+    margin-left:4px;
+    margin-bottom:7px;
+}
