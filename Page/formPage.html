@@ -8,52 +8,142 @@
 
     <link rel="stylesheet" href="formPage.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="form-page">
-        <form action="" method ="GET">
+        <form  class="needs-validation" novalidate>
             <h1 class="heading">Contact us</h1>
             <div class="container">
                 <div class="row mb-3">
-                    <div class="col-6">
-                        <label class="form-labels">First Name   *</label><br/>
-                        <input type="text" placeholder="First name" class="form-control"/>
+                    <div class="col-12 col-md-6 mb-1">
+                        <label class="form-labels" for="firstname">First Name   *</label><br/>
+                        <input type="text" placeholder="First name" class="form-control" id="firstname" required/>
+                        <div  class="invalid-feedback">
+                            This field is required
+                          </div>
                     </div>
-                    <div class="col-6">
-                        <label class="form-labels">Last Name   *</label><br/>
-                        <input type="text" placeholder="Last name" class="form-control"/>
+                    <div class="col-12 col-md-6 mb-1">
+                        <label class="form-labels" for="lastname">Last Name   *</label><br/>
+                        <input type="text" placeholder="Last name" class="form-control" id="lastname" required/>
+                        <div  class="invalid-feedback">
+                            This field is required
+                          </div>
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <div class="col-12">
-                        <label class="form-labels">Email   *</label><br/>
-                        <input type="text" placeholder="First name" class="form-control"/>
+                    <div class="col-12 mb-1">
+                        <label class="form-labels" for="emailadd">Email   *</label><br/>
+                        <input type="email" placeholder="Email" class="form-control" id="emailadd" required/>
+                        <div class="invalid-feedback">
+                            Please enter a valid email address
+                          </div>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <label class="form-labels">Query Type   *</label><br/>
-                    <div class="col-6">
-                    <div class="input-group">
-                        <div class="input-group-text">
-                          <input class="form-check-input mt-0" type="radio" name="queryType" value="General Enquiry" aria-label="General Enquiry">
+                    <div class="col-12 col-md-6 mb-3 ">
+                        <div class="form-control">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="radiogeneral" required>
+                                <label class="form-check-label" for="radiogeneral">
+                                  General Enquiry
+                                </label>
+                              </div>
+                              </div>
+                </div>
+                    <div class="col-12 col-md-6 mb-1">
+                        <div class="form-control">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="radiosupport" required>
+                                <label class="form-check-label" for="radiosupport">
+                                  Support Request
+                                </label>
+                              </div>
+                              </div>
+                      </div>
+                      <div class="invalid-feedback">
+                        Please select query type
+                      </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="form-labels" for="floatingTextarea">Message *</label>
+                    <div class="col-12 mb-1">
+                        <div>
+                            <textarea class="form-control" id="floatingTextarea" style="height: 100px; width: 100%; resize: none;" required></textarea>
                         </div>
-                        <span class="input-group-text">General Enquiry</span>
-                      </div>
-                </div>
-                    <div class="col-6">
-                        <div class="input-group">
-                            <div class="input-group-text">
-                              <input class="form-check-input mt-0" type="radio" name="queryType" value="Support Request" aria-label="General Enquiry">
-                            </div>
-                            <span class="input-group-text">Support Request</span>
+                        <div class="invalid-feedback">
+                            This field is required
                           </div>
-                      </div>
+                    </div>
                 </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+                    <label class="form-check-label" for="exampleCheck1">I concent to being contacted by the team *</label>
+                    <div class="invalid-feedback">
+                    To submit this form, please concent to being contacted
+                      </div>
+                  </div>
+                  <div class="d-grid gap-2" for="buttonequired">
+                    <button class="submit-button" type="submit" id="buttonrequired" required>Submit</button>
+                    
+                  </div>
+
             </div>
             
         </form>
     </div>
+    <script>
+        (function () {
+            'use strict';
+            var forms = document.querySelectorAll('.needs-validation');
+    
+            Array.prototype.slice.call(forms).forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        })();
+
+        document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector(".needs-validation");
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault(); 
+        
+        if (!form.checkValidity()) {
+            event.stopPropagation();
+            form.classList.add("was-validated"); 
+        } else {
+            showCustomAlert();
+        }
+    });
+});
+
+function showCustomAlert() {
+    const alertBox = document.createElement("div");
+    alertBox.innerHTML = `
+        <div class="custom-alert">
+            <h1><i class="fa-regular fa-circle-check"></i> Message sent</h1>
+            <p>Thanks for completing the form. We'll be in touch soon!</p>
+            
+        </div>
+    `;
+    document.body.appendChild(alertBox);
+}
+
+function closeAlert() {
+    document.querySelector(".custom-alert").remove();
+}
+setTimeout(closeAlert, 3000);
+
+    </script>
+    
 </body>
 </html>
